@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @citation.author %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @citation.title %>
+</p>
+
+<p>
+  <strong>Pub info:</strong>
+  <%= @citation.pub_info %>
+</p>
+
+<p>
+  <strong>Classification:</strong>
+  <%= @citation.classification %>
+</p>
+
+<p>
+  <strong>Line numbers quoted:</strong>
+  <%= @citation.line_numbers_quoted %>
+</p>
+
+<%= link_to 'Edit', edit_citation_path(@citation) %> |
+<%= link_to 'Back', citations_path %>
