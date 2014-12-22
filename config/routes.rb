@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
-
   resources :citations
 
   resources :chapters
