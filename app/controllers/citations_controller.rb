@@ -5,6 +5,16 @@ class CitationsController < ApplicationController
   # GET /citations.json
   def index
     @citations = Citation.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @citations.to_csv }
+      format.xls # { send_data @citations.to_csv(col_sep: "\t") }
+    end
+  end
+
+  def import
+    Citation.import(params[:file])
+    redirect_to root_url, notice: "Citations imported."
   end
 
   # GET /citations/1
@@ -69,6 +79,6 @@ class CitationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def citation_params
-      params.require(:citation).permit(:author, :title, :pub_info, :classification, :line_numbers_quoted)
+      params.require(:citation).permit(:author, :title, :pub_info, :classification, :line_numbers_quoted, :page_number)
     end
 end

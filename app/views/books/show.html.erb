@@ -1,4 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Book:</strong>
+  <%= @book.name %>
+</p>
+
+<p>
+  <strong>Number of Lines:</strong>
+  <%= @book.last_line %>
+</p>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

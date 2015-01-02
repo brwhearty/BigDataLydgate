@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :citations
+  resources :citations do
+    collection { post :import }
+  end
 
   resources :chapters
 
-  resources :books
+  resources :books do
+      collection { post :import }
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
