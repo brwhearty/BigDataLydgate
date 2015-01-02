@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :citations
+  resources :citations do
+    collection { post :import }
+  end
 
   resources :chapters
 

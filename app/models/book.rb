@@ -13,7 +13,6 @@ class Book < ActiveRecord::Base
 	def self.import(file)
 	  spreadsheet = open_spreadsheet(file)
 	  header = spreadsheet[0]
-	  puts "Header is #{header}"
 	  (1..spreadsheet.size-1).each do |i|
 	    row = Hash[[header, spreadsheet[i]].transpose]
 	    book = find_by_id(row["id"]) || new

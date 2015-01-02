@@ -1,33 +1,59 @@
-<h1>Listing citations</h1>
+<div id="wrap">
+  <div id="header"><h1>Fall of Princes Books</h1></div>
+  <div id="main">
+    <p>
+      <h2>Import Citations</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Title</th>
-      <th>Pub info</th>
-      <th>Classification</th>
-      <th>Line numbers quoted</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <%= form_tag import_citations_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import" %>
+      <% end %>
+    </p>
+    <p>
+      Download:
+        <%= link_to "CSV", citations_path(format: "csv") %> <!-- |
+        <%= link_to "Excel", citations_path(format: "xls") %> -->
+    </p>
 
-  <tbody>
-    <% @citations.each do |citation| %>
-      <tr>
-        <td><%= citation.author %></td>
-        <td><%= citation.title %></td>
-        <td><%= citation.pub_info %></td>
-        <td><%= citation.classification %></td>
-        <td><%= citation.line_numbers_quoted %></td>
-        <td><%= link_to 'Show', citation %></td>
-        <td><%= link_to 'Edit', edit_citation_path(citation) %></td>
-        <td><%= link_to 'Destroy', citation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table>
+    <!--   <thead>
+        <tr>
+          <th>Author</th>
+          <th>Title</th>
+          <th>Pub info</th>
+          <th>Page number</th>
+          <th>Classification</th>
+          <th>Line numbers quoted</th>
+          <th>Page number</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead> -->
 
+      <tbody>
+        <% @citations.each do |citation| %>
+          <tr>
+            <td><%= citation[:author] %></td>
+          </tr>
+          <tr>
+            <td><%= citation[:title] %></td>
+          </tr>
+          <tr>
+            <td><%= citation[:pub_info] %></td>
+          </tr>
+          <tr>
+            <td><%= citation[:page_number] %></td>
+            <td><%= citation[:line_numbers_quoted] %></td>
+            <td><%= citation[:classification] %></td>
+          </tr>
+    <!--         <td><%= link_to 'Show', citation %></td>
+            <td><%= link_to 'Edit', edit_citation_path(citation) %></td>
+            <td><%= link_to 'Destroy', citation, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to 'New Citation', new_citation_path %>
+</div>
 <br>
 
-<%= link_to 'New Citation', new_citation_path %>

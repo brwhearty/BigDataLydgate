@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102024306) do
+ActiveRecord::Schema.define(version: 20150102222319) do
 
   create_table "books", force: true do |t|
     t.datetime "created_at"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150102024306) do
     t.string   "line_numbers_quoted"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "page_number"
   end
 
   create_table "scholarships_chapters", force: true do |t|
