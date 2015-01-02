@@ -5,6 +5,16 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @books.to_csv }
+      format.xls # { send_data @books.to_csv(col_sep: "\t") }
+    end
+  end
+
+  def import
+    Book.import(params[:file])
+    redirect_to root_url, notice: "Books imported."
   end
 
   # GET /books/1
@@ -69,6 +79,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params[:book]
+      params.require(:book).permit(:name, :last_line)
     end
 end

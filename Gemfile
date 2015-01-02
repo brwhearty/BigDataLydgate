@@ -29,6 +29,10 @@ gem 'spring',        group: :development
 # Add rspec gem for test-driven development
 gem "rspec-rails", :group => [:development, :test]
 
+# For importing csv and xls files
+gem 'roo'
+gem "iconv", "~> 1.0.3"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
